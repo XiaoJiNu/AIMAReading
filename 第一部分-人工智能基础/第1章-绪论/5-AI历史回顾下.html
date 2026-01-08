@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 历史回顾（下）：统计学、大数据与深度学习革命</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.8;
+        }
+        h1, h2, h3, h4 {
+            color: #1e293b;
+            font-weight: 700;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        .highlight-card {
+            background: white;
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+        }
+        .term-highlight {
+            background: linear-gradient(120deg, #e0e7ff 0%, #ede9fe 100%);
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #4338ca;
+        }
+
+        /* ---------------- Diagram Styles ---------------- */
+        .diagram-container {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .diagram-caption {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #64748b;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* ---------------- Chart Styles ---------------- */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            /* overflow: visible for labels outside bounds if needed, 
+               but kept hidden/auto to contain content */
+            overflow: visible; 
+            background: #0f172a; 
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            color: white;
+            padding: 20px;
+        }
+
+        /* Static Label Box Styles */
+        .label-box {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 10px;
+            line-height: 1.3;
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.85); /* Dark semi-transparent */
+            border: 1px solid;
+            border-radius: 6px;
+            padding: 6px 8px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .label-title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 11px;
+        }
+        .label-content {
+            opacity: 0.9;
+        }
+
+        .wave-path {
+            fill: none;
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        @keyframes drawLine {
+            from { stroke-dashoffset: 2000; }
+            to { stroke-dashoffset: 0; }
+        }
+        
+        .animate-draw {
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 0;
+            animation: drawLine 3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        
+        <!-- Header -->
+        <header class="mb-12 text-center border-b pb-8 border-slate-200">
+            <h1 class="text-3xl md:text-4xl leading-tight mb-4">AIMA-第1章第4次分享-AI 历史回顾（下）：<br><span class="text-purple-600">统计学、大数据与深度学习革命 (1986–现在)</span></h1>
+        </header>
+
+        <!-- Section 4.1 -->
+        <section class="mb-16">
+            <h2 class="text-2xl mb-6 flex items-center">
+                <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">4.1</span>
+                联结主义的复兴与科学化（1986–2001）
+            </h2>
+
+            <div class="prose-custom">
+                <p>
+                    面对专家系统的脆弱性，人工智能领域迎来了一种新的、更科学化的方法。这种范式转移主要体现在以下三个方面：
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-white p-4 rounded border border-slate-200 shadow-sm">
+                        <div class="text-purple-600 font-bold mb-2">逻辑 → 概率</div>
+                        <p class="text-sm text-slate-600">基于概率论而不是布尔逻辑来处理不确定性。</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border border-slate-200 shadow-sm">
+                        <div class="text-purple-600 font-bold mb-2">编码 → 学习</div>
+                        <p class="text-sm text-slate-600">基于机器学习而不是手工编码知识。</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border border-slate-200 shadow-sm">
+                        <div class="text-purple-600 font-bold mb-2">直觉 → 实验</div>
+                        <p class="text-sm text-slate-600">重视实验结果和严格的定理，而不是直觉的主张。</p>
+                    </div>
+                </div>
+
+                <p>
+                    大约在 20 世纪 80 年代中期，<span class="term-highlight">反向传播（back-propagation）</span>学习算法被多个团队重新发现。虽然它早在 20 世纪 60 年代初就已发展，但这次被广泛传播和应用，开启了<strong>联结主义（即神经网络）的复兴</strong>。联结主义模型被认为能够以一种更流畅和不精确的方式形成内部概念，更适应现实世界的混乱。
+                </p>
+
+                <div class="highlight-card">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">1988 年：AI 发展的转折点</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-sm text-slate-700"><strong>概率推理的成熟：</strong> 朱迪亚·珀尔（Judea Pearl）的著作使得概率和决策论在 AI 中得到新的认可。他发展的<span class="term-highlight">贝叶斯网络（Bayesian network）</span>提供了一种严格且有效的形式体系，用于表示不确定的知识和进行实用推理。</span>
+                        </li>
+                    </ul>
+
+                    <!-- VISUALIZATION: Bayesian Network -->
+                    <div class="diagram-container bg-slate-50 mt-6 !mb-0 !p-6 border-slate-200">
+                        <div class="relative w-full max-w-sm h-64 mx-auto">
+                            <svg viewBox="0 0 300 240" class="w-full h-full">
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                                    </marker>
+                                </defs>
+                                
+                                <!-- Node: Cloudy (C) -->
+                                <g transform="translate(150, 40)">
+                                    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="bold" fill="#312e81">多云 (C)</text>
+                                    <text x="50" y="5" font-size="10" fill="#6366f1">P(C)</text>
+                                </g>
+
+                                <!-- Node: Sprinkler (S) -->
+                                <g transform="translate(80, 120)">
+                                    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">洒水器 (S)</text>
+                                    <text x="-60" y="5" font-size="10" fill="#64748b" text-anchor="end">P(S|C)</text>
+                                </g>
+
+                                <!-- Node: Rain (R) -->
+                                <g transform="translate(220, 120)">
+                                    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">下雨 (R)</text>
+                                    <text x="55" y="5" font-size="10" fill="#64748b">P(R|C)</text>
+                                </g>
+
+                                <!-- Node: Wet Grass (W) -->
+                                <g transform="translate(150, 200)">
+                                    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+                                    <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="bold" fill="#065f46">草地湿 (W)</text>
+                                    <text x="50" y="5" font-size="10" fill="#16a34a">P(W|S,R)</text>
+                                </g>
+
+                                <!-- Connections -->
+                                <!-- C -> S -->
+                                <path d="M130 60 L100 100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <!-- C -> R -->
+                                <path d="M170 60 L200 100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <!-- S -> W -->
+                                <path d="M100 140 L130 180" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                <!-- R -> W -->
+                                <path d="M200 140 L170 180" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+                            </svg>
+                        </div>
+                        <div class="diagram-caption text-xs">贝叶斯网络示意：通过有向图表示因果关系与条件概率</div>
+                    </div>
+
+                    <ul class="space-y-3 mt-4">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-sm text-slate-700"><strong>强化学习的理论基础：</strong> 理查德·萨顿（Rich Sutton）将强化学习与运筹学中的马尔可夫决策过程（MDP）联系起来。这为 AI 智能体在动态环境中学习最优策略奠定了深厚的理论基础。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    语音识别和手写体字符识别等领域开始广泛采用基于严格数学理论（如隐马尔可夫模型，HMM）并在大量数据上训练的方法，从而实现了稳步提升并过渡到广泛的工业应用。
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 4.2 -->
+        <section class="mb-16">
+            <h2 class="text-2xl mb-6 flex items-center">
+                <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">4.2</span>
+                大数据与深度学习的爆发（2001–现在）
+            </h2>
+
+            <div class="prose-custom">
+                <p>
+                    进入 21 世纪，计算能力的显著进步和互联网的创建，催生了<span class="term-highlight">大数据（big data）</span>的现象。这些海量数据集包括数万亿字的文本、数十亿的图像和视频等。大数据的可用性促使了学习算法的发展，研究表明，将数据集规模增加两到三个数量级所获得的性能提升，往往会超过调整算法带来的提升。
+                </p>
+                
+                <p class="text-sm bg-slate-100 p-3 rounded italic border-l-4 border-slate-400">
+                    例如，IBM 的 Watson 系统在 2011 年的《危险边缘》（Jeopardy!）问答游戏中战胜人类冠军，大数据就是关键因素。
+                </p>
+
+                <p class="mt-4">
+                    <strong>深度学习（deep learning）</strong>——使用多层简单的、可调整的计算单元的机器学习——在 2011 年左右开始真正流行起来。
+                </p>
+
+                <div class="space-y-6 mt-6">
+                    <!-- Breakdown of DL Success -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center text-2xl">🖼️</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">2012：ImageNet 突破</h4>
+                            <p class="text-sm text-slate-600 mt-1">杰弗里·辛顿（Geoffrey Hinton）团队开发的深度学习系统在图像分类竞赛中显著击败传统方法，标志着深度学习时代的正式开启。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-2xl">💻</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">硬件驱动 (GPU/TPU)</h4>
+                            <p class="text-sm text-slate-600 mt-1">从 2012 年到 2018 年，用于训练顶级 AI 应用的计算能力增长了 <strong>30 万倍</strong>，大约每 3.4 个月翻一番。</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">🤖</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">博弈的超人表现</h4>
+                            <p class="text-sm text-slate-600 mt-1">AlphaGo 和 AlphaZero 利用深度网络和强化学习，在围棋等复杂博弈中击败了人类和机器对手。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUMMARY CHART: AI WAVES -->
+        <section class="mt-20">
+            <h2 class="text-2xl font-bold mb-8 text-center text-slate-800">总结：人工智能的演进浪潮 (1943–Present)</h2>
+            
+            <div class="chart-container font-sans text-white">
+                <!-- Legend -->
+                <div class="absolute top-4 right-4 flex flex-col gap-2 text-xs z-10 bg-slate-900/80 p-3 rounded backdrop-blur-sm border border-slate-700">
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-400"></span> 符号主义</div>
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-400"></span> 专家系统</div>
+                    <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-400"></span> 深度学习</div>
+                </div>
+
+                <svg viewBox="0 0 800 500" class="w-full h-auto overflow-visible">
+                    <!-- Grid Lines -->
+                    <g stroke="#334155" stroke-width="0.5" stroke-dasharray="4 4">
+                        <line x1="50" y1="450" x2="780" y2="450" /> <!-- X Axis -->
+                        <line x1="50" y1="50" x2="50" y2="450" />   <!-- Y Axis -->
+                    </g>
+                    
+                    <!-- X Axis Labels -->
+                    <g fill="#94a3b8" font-size="12" text-anchor="middle">
+                        <text x="50" y="470">1940</text>
+                        <text x="135" y="470">1950</text>
+                        <text x="220" y="470">1960</text>
+                        <text x="305" y="470">1970</text>
+                        <text x="390" y="470">1980</text>
+                        <text x="475" y="470">1990</text>
+                        <text x="560" y="470">2000</text>
+                        <text x="645" y="470">2010</text>
+                        <text x="730" y="470">2020+</text>
+                    </g>
+
+                    <!-- Gradients -->
+                    <defs>
+                        <linearGradient id="gradSymbolic" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradExpert" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradDeep" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#d946ef;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Wave Paths -->
+                    <!-- 1. Symbolic Era: Rise -> Peak -> Fall -->
+                    <path d="M75 440 Q 150 400 255 200 Q 300 170 320 400" stroke="url(#gradSymbolic)" fill="none" class="wave-path animate-draw" />
+                    
+                    <!-- 2. Expert Systems: Rise -> Peak -> Fall -->
+                    <path d="M320 400 Q 360 430 420 230 Q 450 200 460 370" stroke="url(#gradExpert)" fill="none" class="wave-path animate-draw" style="animation-delay: 1s;" />
+
+                    <!-- 3. Statistical/Deep Learning: Steady Rise -> Explosion -->
+                    <path d="M460 370 Q 540 330 640 250 C 680 200 720 150 750 60" stroke="url(#gradDeep)" fill="none" class="wave-path animate-draw" style="animation-delay: 2s;" />
+
+                    <!-- === STATIC LABELS WITH CONNECTING LINES === -->
+                    <g stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2" opacity="0.6">
+                         <!-- Lines connecting points to boxes -->
+                         <line x1="180" y1="320" x2="180" y2="350" /> <!-- 1956 down -->
+                         <line x1="255" y1="200" x2="255" y2="130" /> <!-- Peak 1 up -->
+                         <line x1="320" y1="400" x2="320" y2="430" /> <!-- Winter 1 down -->
+                         <line x1="420" y1="230" x2="420" y2="160" /> <!-- Peak 2 up -->
+                         <line x1="460" y1="370" x2="460" y2="400" /> <!-- Winter 2 down -->
+                         <line x1="580" y1="290" x2="580" y2="230" /> <!-- Stat up -->
+                         <line x1="750" y1="60"  x2="650" y2="60" />  <!-- DL left -->
+                    </g>
+
+                    <!-- 1. 1956 Dartmouth -->
+                    <circle cx="180" cy="320" r="4" fill="#3b82f6" />
+                    <foreignObject x="120" y="350" width="120" height="70">
+                        <div class="label-box border-blue-500">
+                            <span class="label-title text-blue-300">1956: AI 诞生</span>
+                            <span class="label-content">达特茅斯会议<br>提出“人工智能”</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- 2. Symbolic Peak -->
+                    <circle cx="255" cy="200" r="4" fill="#3b82f6" />
+                    <foreignObject x="195" y="60" width="120" height="70">
+                        <div class="label-box border-blue-400">
+                            <span class="label-title text-blue-300">符号主义全盛期</span>
+                            <span class="label-content">通用问题求解器<br>微世界, Lisp</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- 3. Winter 1 -->
+                    <circle cx="320" cy="400" r="4" fill="#64748b" />
+                    <foreignObject x="260" y="430" width="120" height="60">
+                        <div class="label-box border-slate-500">
+                            <span class="label-title text-slate-300">第一次寒冬 (1973)</span>
+                            <span class="label-content">莱特希尔报告<br>算力不足</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- 4. Expert Systems Peak -->
+                    <circle cx="420" cy="230" r="4" fill="#f59e0b" />
+                    <foreignObject x="360" y="90" width="120" height="70">
+                        <div class="label-box border-amber-500">
+                            <span class="label-title text-amber-300">专家系统繁荣</span>
+                            <span class="label-content">知识工程<br>XCON, Mycin</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- 5. Winter 2 -->
+                    <circle cx="460" cy="370" r="4" fill="#64748b" />
+                    <foreignObject x="400" y="400" width="120" height="60">
+                        <div class="label-box border-slate-500">
+                            <span class="label-title text-slate-300">第二次寒冬 (1990)</span>
+                            <span class="label-content">Lisp 机器崩盘<br>常识推理失败</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- 6. Statistical Learning -->
+                    <circle cx="580" cy="290" r="4" fill="#a855f7" />
+                    <foreignObject x="520" y="160" width="120" height="70">
+                        <div class="label-box border-purple-400">
+                            <span class="label-title text-purple-300">统计学复兴</span>
+                            <span class="label-content">概率与大数据<br>IBM Watson</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- 7. Deep Learning -->
+                    <circle cx="750" cy="60" r="6" fill="#d946ef" class="animate-pulse" />
+                    <foreignObject x="510" y="20" width="140" height="80">
+                        <div class="label-box border-pink-500 text-right" style="margin-left: auto;">
+                            <span class="label-title text-pink-300">深度学习爆发 (2012+)</span>
+                            <span class="label-content">ImageNet, AlphaGo<br>LLMs / GPT</span>
+                        </div>
+                    </foreignObject>
+
+                </svg>
+                <div class="text-center mt-2 text-xs text-slate-500">
+                    * 图表展示了 AI 技术热度随时间的变化趋势
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
